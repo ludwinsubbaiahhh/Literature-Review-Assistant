@@ -13,8 +13,9 @@ Core logic for the multi‑agent literature‑review assistant built with the
 The module is deliberately self‑contained so it can be reused in CLI apps,
 Streamlit, FastAPI, Gradio, etc.
 '''
-
 from __future__ import annotations
+import os
+from dotenv import load_dotenv
 
 import asyncio
 from typing import AsyncGenerator, Dict, List
@@ -33,6 +34,7 @@ from autogen_ext.models.openai import OpenAIChatCompletionClient
 # ---------------------------------------------------------------------------
 # 1. Tool definition ---------------------------------------------------------
 # ---------------------------------------------------------------------------
+load_dotenv()
 
 def arxiv_search(query: str, max_results: int = 5) -> List[Dict]:
     """Return a compact list of arXiv papers matching *query*.
